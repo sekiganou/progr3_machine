@@ -1,11 +1,9 @@
 public class Triangle extends Polygon{
 
-    private final float height;
-    private final float base;
-    public Triangle(float height, float base){
-        this.height = height;
-        this.base = base;
-    }
+    @AttributeField
+    private float height;
+    @AttributeField
+    private float base;
 
     @Override
     public int getNumVertices() {
@@ -19,7 +17,7 @@ public class Triangle extends Polygon{
 
     @Override
     public String toString() {
-        return "Triangle{" + "height = " + height + ", base = " + base + '}';
+        return "Triangle{" + "number of vertices = " + getNumVertices() + ", height = " + height + ", base = " + base + ", area = " + getArea() + '}';
     }
 
     @Override
