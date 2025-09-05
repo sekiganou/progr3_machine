@@ -8,16 +8,12 @@ public class Geometries {
     }
 
     public boolean addPolygon(Polygon polygon) {
-        // FIXME: polygons.contains should check where a polygon with the same fields exists or not but it doesn't happen: i can have two instances of triangle with the same base and height
-        if(polygons.contains(polygon)) return false;
-        polygons.add(polygon);
-        return true;
+        return !polygons.add(polygon);
     }
 
     public boolean removePolygon(Polygon polygon) {
         if(polygons.contains(polygon)) return false;
-        polygons.remove(polygon);
-        return true;
+        return !polygons.remove(polygon);
     }
 
     public HashSet<Polygon> getPolygons() {

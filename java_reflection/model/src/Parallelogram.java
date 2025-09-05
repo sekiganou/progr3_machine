@@ -20,10 +20,4 @@ public class Parallelogram extends Polygon{
         return "Parallelogram{" + "number of vertices = " + getNumVertices() + ", height = " + height + ", base = " + base + ", area = " + getArea() + '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (!super.equals(o)) return false;
-        Parallelogram parallelogram = (Parallelogram) o;
-        return height == parallelogram.height && base == parallelogram.base;
-    }
 }

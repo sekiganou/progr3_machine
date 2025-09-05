@@ -47,7 +47,8 @@ public class Main {
 
         Geometries geometries = new Geometries();
         for (int j = 0; j < i; j++) {
-            geometries.addPolygon(instantiatePolygon());
+            boolean  added = geometries.addPolygon(instantiatePolygon());
+            System.out.println("Polygon " + (added ? "not " : "") + "added");
         }
 
         System.out.println("--------------------------------------------");

@@ -1,41 +1,80 @@
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public abstract class Polygon {
     public abstract int getNumVertices();
     public abstract float getArea();
 
+    private List<Field> getAttributeFields() {
+        return Arrays.stream(this.getClass().getDeclaredFields())
+                .filter(f -> f.isAnnotationPresent(AttributeField.class))
+                .peek(f -> f.setAccessible(true))
+                .toList();
+    }
+
+
     public String[] describeAttributes() {
-        ArrayList<String> attributes = new ArrayList<String>();
-        Field[] fields = this.getClass().getDeclaredFields();
-        if(fields.length == 0)
-            return new String[0];
+        return getAttributeFields().stream()
+                .map(Field::getName)
+                .toArray(String[]::new);
+    }
 
-        for (Field field : fields) {
-            if(field.isAnnotationPresent(AttributeField.class))
-                attributes.add(field.getName());
+    public void setAttributes(float[] attributes) {
+        List<Field> fields = getAttributeFields();
+        if (attributes.length != fields.size()) {
+            throw new IllegalArgumentException("Attribute count mismatch");
         }
-        return  attributes.toArray(new String[0]);
-    };
-
-    public void setAttributes(float[] attributes){
-        int index = 0;
-        Field[] fields = this.getClass().getDeclaredFields();
-        if(fields.length == 0)
-            return;
-
-        for (Field field : fields) {
-            if(field.isAnnotationPresent(AttributeField.class))
-                field.setAccessible(true);
+        for (int i = 0; i < fields.size(); i++) {
             try {
-                field.set(this, attributes[index++]);
+                fields.get(i).set(this, attributes[i]);
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
-    };
-
-    public boolean equals(Object o) {
-        return o != null && getClass() == o.getClass();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Polygon other = (Polygon) o;
+        List<Field> fields = getAttributeFields();
+
+        for (Field f : fields) {
+            try {
+                Object thisVal = f.get(this);
+                Object otherVal = f.get(other);
+                if (!Objects.equals(thisVal, otherVal)) {
+                    return false;
+                }
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return true;
+    }
+
+
+    @Override
+    public int hashCode() {
+        try {
+            return Arrays.hashCode(
+                    Arrays.stream(this.getClass().getDeclaredFields())
+                            .filter(f -> f.isAnnotationPresent(AttributeField.class))
+                            .peek(f -> f.setAccessible(true))
+                            .map(f -> {
+                                try { return f.get(this); }
+                                catch (IllegalAccessException e) { return null; }
+                            })
+                            .toArray()
+            );
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
