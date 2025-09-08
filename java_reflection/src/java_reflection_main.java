@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class java_reflection_main {
     private static Polygon instantiatePolygon() {
         System.out.println("Choose a polygon: ");
 
