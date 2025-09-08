@@ -7,6 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="java_reflection_model" />
+    <orderEntry type="module" module-name="generic_types_model" />
   </component>
 </module>
