@@ -1,9 +1,9 @@
-public class Res4KScreen implements Screen {
+public class FourKScreen implements Screen {
     private final int resolutionX;
     private final int resolutionY;
     private final double price;
 
-    public Res4KScreen() {
+    public FourKScreen() {
         price = 299.99;
         resolutionY = 2160;
         resolutionX = 3840;

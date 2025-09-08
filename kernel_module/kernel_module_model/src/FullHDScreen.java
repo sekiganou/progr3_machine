@@ -1,9 +1,9 @@
-public class ResFullHDScreen implements Screen{
+public class FullHDScreen implements Screen{
     private final int resolutionX;
     private final int resolutionY;
     private final double price;
 
-    public ResFullHDScreen() {
+    public FullHDScreen() {
         price = 99.99;
         resolutionY = 1080;
         resolutionX = 1920;

@@ -2,18 +2,24 @@ public record PC(Processor processor, Screen screen) {
 
     public String getConfiguration() {
         return String.format(
-                "\n- Processor: %.2f GHz, %d cores, %d threads, price: %.2f€\n- Screen: %dx%d, price: %.2f€",
-                processor.getClockSpeed(),
-                processor.getCores(),
-                processor.getThreads(),
+                """
+
+                        Processor: %s (%.2f GHz, %d cores, %d threads) - %.2f€
+                        Screen: %dx%d - %.2f€""",
+                processor.getClass().getSimpleName().replace("Processor", ""),
+                processor.getClockSpeed(), processor.getCores(), processor.getThreads(),
                 processor.getPrice(),
-                screen.getResolutionX(),
-                screen.getResolutionY(),
-                screen.getPrice()
-        );
+                screen.getResolutionX(), screen.getResolutionY(),
+                screen.getPrice());
+
     }
 
     public double getTotalPrice() {
         return processor.getPrice() + screen.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        return getConfiguration() + "\nTotal price is " + getTotalPrice() + " €";
     }
 }
