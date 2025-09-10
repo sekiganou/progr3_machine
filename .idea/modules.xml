@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/java_reflection/java_reflection_model/java_reflection_model.iml" filepath="$PROJECT_DIR$/java_reflection/java_reflection_model/java_reflection_model.iml" />
       <module fileurl="file://$PROJECT_DIR$/kernel_module/kernel_module.iml" filepath="$PROJECT_DIR$/kernel_module/kernel_module.iml" />
       <module fileurl="file://$PROJECT_DIR$/kernel_module/kernel_module_model/kernel_module_model.iml" filepath="$PROJECT_DIR$/kernel_module/kernel_module_model/kernel_module_model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/observer_observable/observer_observable.iml" filepath="$PROJECT_DIR$/observer_observable/observer_observable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/observer_observable/observer_observable_model/observer_observable_model.iml" filepath="$PROJECT_DIR$/observer_observable/observer_observable_model/observer_observable_model.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/progr3_machine.iml" filepath="$PROJECT_DIR$/.idea/progr3_machine.iml" />
     </modules>
   </component>
