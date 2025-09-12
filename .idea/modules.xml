@@ -11,6 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/observer_observable/observer_observable.iml" filepath="$PROJECT_DIR$/observer_observable/observer_observable.iml" />
       <module fileurl="file://$PROJECT_DIR$/observer_observable/observer_observable_model/observer_observable_model.iml" filepath="$PROJECT_DIR$/observer_observable/observer_observable_model/observer_observable_model.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/progr3_machine.iml" filepath="$PROJECT_DIR$/.idea/progr3_machine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proverbs_app/proverbs_app.iml" filepath="$PROJECT_DIR$/proverbs_app/proverbs_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proverbs_app/proverbs_app_mvc/proverbs_app_mvc.iml" filepath="$PROJECT_DIR$/proverbs_app/proverbs_app_mvc/proverbs_app_mvc.iml" />
     </modules>
   </component>
 </project>
