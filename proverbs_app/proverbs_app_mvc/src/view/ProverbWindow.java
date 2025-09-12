@@ -10,10 +10,10 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ProverbWindow extends JFrame {
+public class ProverbWindow extends JFrame implements Observer {
     private final JLabel proverbLabel;
 
-    public ProverbWindow(Proverbs proverbs) {
+    public ProverbWindow(Proverbs proverbs, GenerateProverb generateProverbController) {
         super("Proverbs");
         JPanel mainPanel = new JPanel(new GridBagLayout());
 
@@ -26,7 +26,7 @@ public class ProverbWindow extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(10, 0, 10, 0); // spacing between components
 
-        proverbLabel = new JLabel("...", SwingConstants.CENTER);
+        proverbLabel = new JLabel(proverbs.getSelectedProverb(), SwingConstants.CENTER);
         mainPanel.add(proverbLabel, gbc);
 
         setContentPane(mainPanel);
@@ -39,9 +39,15 @@ public class ProverbWindow extends JFrame {
         generateProverbButton.addActionListener(new  ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                proverbs.getRandomProverb();
-                proverbLabel.setText(proverbs.selected);
+                generateProverbController.selectRandomProverb();
             }
         });
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if(o instanceof Proverbs) {
+            proverbLabel.setText(((Proverbs)o).getSelectedProverb());
+        }
     }
 }
