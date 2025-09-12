@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Proverbs extends Observable {
     private final Random random = new Random();
-    private String selected = "Click to generate proverb!";
+    private String selectedProverb = "Click to generate proverb!";
     public static final List<String> list = List.of(
             "A penny saved is a penny earned.",
             "Actions speak louder than words.",
@@ -30,12 +30,12 @@ public class Proverbs extends Observable {
 
     public void selectRandomProverb() {
         int randomIndex = random.nextInt(list.size());
-        this.selected = list.get(randomIndex);
+        this.selectedProverb = list.get(randomIndex);
         setChanged();
         notifyObservers();
     }
 
     public String getSelectedProverb() {
-        return selected;
+        return selectedProverb;
     }
 }
