@@ -1,11 +1,12 @@
 package model;
 
 import java.util.List;
+import java.util.Observable;
 import java.util.Random;
 
-public class Proverbs {
-    private final Random random = new Random();
-    private static final List<String> proverbs = List.of(
+public class Proverbs extends Observable {
+    public String selected;
+    public static final List<String> list = List.of(
             "A penny saved is a penny earned.",
             "Actions speak louder than words.",
             "All that glitters is not gold.",
@@ -26,8 +27,8 @@ public class Proverbs {
             "You can't judge a book by its cover."
     );
 
-    public String getRandom() {
-        int randomIndex = random.nextInt(proverbs.size());
-        return proverbs.get(randomIndex);
+    public void getRandomProverb() {
+        setChanged();
+        notifyObservers();
     }
 }
