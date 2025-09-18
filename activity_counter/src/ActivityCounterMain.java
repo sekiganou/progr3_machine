@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Main {
+public class ActivityCounterMain {
     public static void main(String[] args) {
         var action0 = new Action("Action 0", new ArrayList<>(), 3);
 
